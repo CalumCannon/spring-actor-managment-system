@@ -18,7 +18,7 @@ public class Director {
     @OneToMany(mappedBy = "director", fetch = FetchType.LAZY)
     private List<Film> films;
 
-    public Director(String name, List<Film> films) {
+    public Director(String name) {
         this.name = name;
 
     }
