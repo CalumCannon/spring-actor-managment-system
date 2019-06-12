@@ -12,6 +12,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -36,9 +38,16 @@ public class DataLoader implements ApplicationRunner {
         Film film = new Film("Film Movie", director, Genre.SciFi);
         filmRepository.save(film);
 
+        Film film2 = new Film("Film Movie 2", director, Genre.Horror);
+        filmRepository.save(film2);
+
         Actor actor = new Actor("Calum");
         actor.addFilm(film);
         actorRepository.save(actor);
+
+        List<Film> foundFilms  = filmRepository.getFilmsByDirectorId(director.getId());
+
+
 
         /*
         jack.addRaid(raid1);
