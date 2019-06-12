@@ -1,5 +1,6 @@
 package com.codeclan.movies.ManyToManySpring.models;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "films")
@@ -17,7 +18,23 @@ public class Film {
     private Director director;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Genre genre;
+
+    @ManyToMany
+    @JoinTable(
+            name = "actors_films",
+            joinColumns = { @JoinColumn(
+                    name = "film_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "actor_id",
+                    nullable = false,
+                    updatable = false)
+            })
+    private List<Actor> actors;
 
 
     public Film(String title, Director director, Genre genre) {

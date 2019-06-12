@@ -1,8 +1,10 @@
 package com.codeclan.movies.ManyToManySpring.components;
 
+import com.codeclan.movies.ManyToManySpring.models.Actor;
 import com.codeclan.movies.ManyToManySpring.models.Director;
 import com.codeclan.movies.ManyToManySpring.models.Film;
 import com.codeclan.movies.ManyToManySpring.models.Genre;
+import com.codeclan.movies.ManyToManySpring.repositories.ActorRepository;
 import com.codeclan.movies.ManyToManySpring.repositories.DirectorRepository;
 import com.codeclan.movies.ManyToManySpring.repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     DirectorRepository directorRepository;
 
+    @Autowired
+    ActorRepository actorRepository;
+
 
     public DataLoader() {
 
@@ -30,6 +35,9 @@ public class DataLoader implements ApplicationRunner {
 
         Film film = new Film("Film Movie", director, Genre.SciFi);
         filmRepository.save(film);
+
+        Actor actor = new Actor("Calum");
+        actorRepository.save(actor);
 
         /*
         jack.addRaid(raid1);
