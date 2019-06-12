@@ -1,5 +1,8 @@
 package com.codeclan.movies.ManyToManySpring.models;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +25,7 @@ public class Film {
     private Genre genre;
 
     @ManyToMany
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "actors_films",
             joinColumns = { @JoinColumn(
@@ -41,6 +45,7 @@ public class Film {
         this.title = title;
         this.director = director;
         this.genre = genre;
+        this.actors = new ArrayList<>();
     }
 
     public Film(){
@@ -77,5 +82,17 @@ public class Film {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
+    }
+
+    public void addActor(Actor actor){
+        this.actors.add(actor);
     }
 }

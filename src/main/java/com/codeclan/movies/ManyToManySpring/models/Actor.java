@@ -1,6 +1,7 @@
 package com.codeclan.movies.ManyToManySpring.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,6 +33,7 @@ public class Actor {
 
     public Actor(String name) {
         this.name = name;
+        this.films = new ArrayList<>();
     }
 
     public Actor(){

@@ -37,6 +37,7 @@ public class DataLoader implements ApplicationRunner {
         filmRepository.save(film);
 
         Actor actor = new Actor("Calum");
+        actor.addFilm(film);
         actorRepository.save(actor);
 
         /*
